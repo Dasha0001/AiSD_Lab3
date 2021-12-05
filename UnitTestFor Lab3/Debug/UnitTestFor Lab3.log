@@ -1,0 +1,6 @@
+﻿  pch.cpp
+  UnitTestFor Lab3.cpp
+C:\Users\DASHA\source\repos\UnitTestFor Lab3\UnitTestFor Lab3.cpp(86,21): warning C4101: bfs: неиспользованная локальная переменная
+C:\Users\DASHA\source\repos\UnitTestFor Lab3\UnitTestFor Lab3.cpp(86,14): warning C4101: dfs: неиспользованная локальная переменная
+     Создается библиотека C:\Users\DASHA\source\repos\Lab3\Debug\UnitTestFor Lab3.lib и объект C:\Users\DASHA\source\repos\Lab3\Debug\UnitTestFor Lab3.exp
+  UnitTestFor Lab3.vcxproj -> C:\Users\DASHA\source\repos\Lab3\Debug\UnitTestFor Lab3.dll
