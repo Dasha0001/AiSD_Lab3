@@ -24,6 +24,51 @@ public:
 class Binary_Heap {
 	private:
 	 Tree_Element* root_of_heap;
+	 Tree_Element* parent_search(int tmp) {
+
+		 Tree_Element* ending_parent = root_of_heap;
+
+		 int tmp_lay = tmp;
+		 int tmp_Last = this->quantity_Last_el;
+
+		 if (this->quantity_Last_el > tmp) {
+			 tmp_lay = tmp_lay * 2;
+		 }
+
+		 while (tmp_lay != 2) {
+			 if (tmp_Last <= (tmp_lay / 2)) {
+
+				 ending_parent = ending_parent->left_Element;
+				 tmp_lay = tmp_lay / 2;
+			 }
+			 else {
+				 ending_parent = ending_parent->right_Element;
+				 tmp_Last = tmp_Last - tmp_lay / 2;
+				 tmp_lay = tmp_lay / 2;
+			 }
+		 }
+
+		 return ending_parent;
+	 }
+
+	 Tree_Element* findElem(int data) {
+		 Tree_Element* Elem = NULL;
+
+		 DFT_iterator* new_It;
+		 new_It = new DFT_iterator(root_of_heap);
+
+		 while (new_It->has_next()) {
+			 Elem = new_It->cur;
+			 if (new_It->next() == data) {
+				 delete new_It;
+				 return Elem;
+			 }
+		 }
+
+
+		 delete new_It;
+		 throw std::invalid_argument("error not found");
+	 }
 	 
 	public:
 		int hight_of_heap, quantity_Last_el;
@@ -110,51 +155,7 @@ class Binary_Heap {
 		next->data = tmp;
 	}
 
-	Tree_Element* parent_search(int tmp ) {
-
-		Tree_Element* ending_parent = root_of_heap;
-
-		int tmp_lay = tmp;
-		int tmp_Last = this->quantity_Last_el;
-
-		if (this->quantity_Last_el > tmp) {
-			tmp_lay = tmp_lay * 2;
-		}
-
-		while (tmp_lay != 2) {
-			if (tmp_Last <= (tmp_lay / 2)) {
-
-				ending_parent = ending_parent->left_Element;
-				tmp_lay = tmp_lay / 2;
-			}
-			else {
-				ending_parent = ending_parent->right_Element;
-				tmp_Last = tmp_Last - tmp_lay / 2;
-				tmp_lay = tmp_lay / 2;
-			}
-		}
-
-		return ending_parent;
-	}
-
-	Tree_Element* findElem(int data) {
-		Tree_Element* Elem = NULL;
-
-		DFT_iterator* new_It;
-		new_It = new DFT_iterator(root_of_heap);
-
-		while (new_It->has_next()) {
-			Elem = new_It->cur;
-			if (new_It->next() == data) {
-				delete new_It;
-				return Elem;
-			}
-		}
-
-
-		delete new_It;
-		throw std::invalid_argument("error not found");
-	}
+	
 
 	void siftDown(Tree_Element* tmp) {
 
